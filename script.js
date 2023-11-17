@@ -44,6 +44,7 @@ const Foods = [
 ];
 
 const foodsWrapper = document.getElementById("foods_wrapper");
+const orderBtn = document.getElementById("orderBtn");
 
 const displayFood = (data) => {
     const fragment = new DocumentFragment();
@@ -76,6 +77,7 @@ let selectedFoods = [];
 foodsWrapper.addEventListener("click", selectFoods);
 
 function selectFoods(event) {
+  
   if (event.target.classList.contains("selectBtn")) {
     const id = event.target.id;
 
@@ -107,9 +109,14 @@ function selectFoods(event) {
     // Toggle the background color
     parentEl.classList.toggle("border");
   }
+
+  if (selectedFoods.length > 0) {
+    orderBtn.classList.remove("hidden");
+  } else {
+    orderBtn.classList.add("hidden");
+  }
 }
 
-const orderBtn = document.getElementById("orderBtn");
 const loadingIndicator = document.getElementById("loadingIndicator");
 
 orderBtn.addEventListener("click", orderFood);
