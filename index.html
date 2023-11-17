@@ -12,10 +12,11 @@
 
     <link href="/styles/output.css" rel="stylesheet">
 
+    <script src="https://cdn.tailwindcss.com"></script>
     <script defer src="script.js"></script>
 </head>
 
-<body class="">
+<body class=" w-screen h-screen relative">
     <header class="bg-base-300">
         <div class="navbar w-11/12 mx-auto ">
             <div class="flex-1">
@@ -65,13 +66,33 @@
         </div>
     </header>
 
+    <!-- loading spinner -->
+    <span id="loadingIndicator" class="loading loading-spinner loading-lg text-primary absolute top-1/2 left-1/2 z-50 hidden"></span>
+    <!-- output modal -->
+    <!-- Open the modal using ID.showModal() method -->
+    <!-- <button class="btn" onclick="my_modal_1.showModal()">open modal</button> -->
+    <dialog id="my_modal_1" class="modal " >
+        <div class="modal-box text-center">
+            <h3 class="font-bold text-lg">Order Placed</h3>
+            <p class="py-4">Order ID : <span id="orderId"></span></p>
+            <ul id="product_list_wrapper" class="list-none flex gap-3 flex-wrap justify-between w-10/12 mx-auto">
+                
+            </ul>
+            <div class="modal-action">
+                <form method="dialog" class="mx-auto">
+                    <!-- if there is a button in form, it will close the modal -->
+                    <button id="modal_close_btn" class="btn">Close</button>
+                </form>
+            </div>
+        </div>
+    </dialog>
     <main class="">
         <div class="container w-11/12 mx-auto p-2">
             <div class="heading ">
                 <h1 class="text-xl mb-2">Foods</h1>
                 <hr>
             </div>
-            <div id="foods_wrapper" class="grid grid-cols-2 lg:grid-cols-3 gap-10">
+            <div id="foods_wrapper" class="grid grid-cols-3 lg:grid-cols-5 gap-4 mt-4">
                 <!-- <div class="card w-64 bg-base-100 shadow-xl">
                     <figure class="px-10 pt-10">
                         <img src="/images/burger.png" alt="Burger" class="rounded-xl" />
@@ -85,8 +106,12 @@
                     </div>
                 </div> -->
             </div>
+            <div class="w-fit mx-auto">
+                <button id="orderBtn" class="btn btn-primary mx-auto">Order Now</button>
+            </div>
         </div>
     </main>
+
 </body>
 
 </html>
